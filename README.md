@@ -147,11 +147,11 @@ Em conformidade com os critérios éticos e diretrizes acadêmicas da Sprint 4, 
 
 # 👥 Equipe
 
-* Luiz Alberto De Carvalho Holanda Junior
-* Felipe Ribeiro Da Silva
-* Milena Kubo de Biaggi
-* Yasmim Eun Hae Kim
-* Thiago Fernandes Kulesza
+* Luiz Alberto De Carvalho Holanda Junior — RM 573843
+* Felipe Ribeiro Da Silva — RM 573818
+* Milena Kubo de Biaggi — RM 572590
+* Yasmim Eun Hae Kim — RM 571494
+* Thiago Fernandes Kulesza — RM 568922
 
 ---
 
