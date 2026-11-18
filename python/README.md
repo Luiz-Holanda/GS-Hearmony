@@ -120,7 +120,6 @@ Em conformidade com os critérios éticos e diretrizes acadêmicas da Sprint 4, 
 
 * Criação e formatação deste README;
 * Revisão geral do projeto;
-* Auxílio pontual na identificação e resolução de bugs.
 
 ---
 # 👥 Equipe
