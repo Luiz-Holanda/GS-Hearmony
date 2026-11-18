@@ -1,0 +1,280 @@
+[
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 0,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T16:36:35.433325+00:00"
+    },
+    "resultado_python": "protecao_simulada_inativa"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 100,
+      "threshold": 70,
+      "state": "protecao",
+      "anc_simulado": true,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T16:38:25.800574+00:00"
+    },
+    "resultado_python": "protecao_simulada_ativa"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 100,
+      "threshold": 70,
+      "state": "protecao",
+      "anc_simulado": true,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T16:38:47.370740+00:00"
+    },
+    "resultado_python": "protecao_simulada_ativa"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 78,
+      "threshold": 70,
+      "state": "protecao",
+      "anc_simulado": true,
+      "alert_sound": true,
+      "received_at": "2026-11-16T17:36:21.995246+00:00"
+    },
+    "resultado_python": {
+      "resultado": "simulacao_fxlms_concluida",
+      "ruido_pontos": 78,
+      "rms_antes": 0.551543,
+      "rms_depois": 0.041055,
+      "reducao_estimada_db": 22.56,
+      "modelo": "tom de 80 Hz com FxLMS simplificado"
+    }
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 78,
+      "threshold": 70,
+      "state": "protecao",
+      "anc_simulado": true,
+      "alert_sound": true,
+      "received_at": "2026-11-16T17:36:21.995246+00:00"
+    },
+    "resultado_python": {
+      "resultado": "simulacao_fxlms_concluida",
+      "ruido_pontos": 78,
+      "rms_antes": 0.551543,
+      "rms_depois": 0.041055,
+      "reducao_estimada_db": 22.56,
+      "modelo": "tom de 80 Hz com FxLMS simplificado"
+    }
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 78,
+      "threshold": 70,
+      "state": "protecao",
+      "anc_simulado": true,
+      "alert_sound": true,
+      "received_at": "2026-11-16T17:36:21.995246+00:00"
+    },
+    "resultado_python": {
+      "resultado": "simulacao_fxlms_concluida",
+      "ruido_pontos": 78,
+      "rms_antes": 0.551543,
+      "rms_depois": 0.041055,
+      "reducao_estimada_db": 22.56,
+      "modelo": "tom de 80 Hz com FxLMS simplificado"
+    }
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:47:59.337856+00:00"
+    },
+    "resultado_python": "protecao_simulada_inativa"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:47:59.337856+00:00"
+    },
+    "resultado_python": "protecao_simulada_inativa"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:47:59.337856+00:00"
+    },
+    "resultado_python": "protecao_simulada_inativa"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:50:25.967516+00:00"
+    },
+    "resultado_python": "consulta"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:50:25.967516+00:00"
+    },
+    "resultado_python": "consulta"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:50:25.967516+00:00"
+    },
+    "resultado_python": "consulta"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:50:25.967516+00:00"
+    },
+    "resultado_python": "consulta"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:50:25.967516+00:00"
+    },
+    "resultado_python": "consulta"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:50:25.967516+00:00"
+    },
+    "resultado_python": "consulta"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:50:25.967516+00:00"
+    },
+    "resultado_python": "consulta"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T18:50:25.967516+00:00"
+    },
+    "resultado_python": "consulta"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 2,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos",
+      "received_at": "2026-11-16T19:10:14.974053+00:00"
+    },
+    "resultado_python": "protecao_simulada_inativa"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 87,
+      "threshold": 70,
+      "state": "protecao",
+      "anc_simulado": true,
+      "alert_sound": true,
+      "unit": "pontos"
+    },
+    "resultado_python": "recebida via MQTT",
+    "recebida_em": "2026-11-18T14:47:51.501588+00:00"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 87,
+      "threshold": 70,
+      "state": "protecao",
+      "anc_simulado": true,
+      "alert_sound": true,
+      "unit": "pontos"
+    },
+    "resultado_python": "recebida via MQTT",
+    "recebida_em": "2026-11-18T15:53:08.833406+00:00"
+  }
+]

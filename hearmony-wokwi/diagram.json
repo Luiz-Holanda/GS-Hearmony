@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "Hearmony - equipe FIAP (preencher nomes no sketch.ino)",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 75, "left": 0, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "noise", "top": 5, "left": 400, "attrs": { "value": "0" } },
+    { "type": "wokwi-led", "id": "ledGreen", "top": 210, "left": 340, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "resGreen", "top": 280, "left": 340, "attrs": { "value": "220" } },
+    { "type": "wokwi-led", "id": "ledYellow", "top": 210, "left": 465, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-resistor", "id": "resYellow", "top": 280, "left": 465, "attrs": { "value": "220" } },
+    { "type": "wokwi-led", "id": "ledRed", "top": 210, "left": 590, "attrs": { "color": "red" } },
+    { "type": "wokwi-resistor", "id": "resRed", "top": 280, "left": 590, "attrs": { "value": "220" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 365, "left": 345, "attrs": { "volume": "0.12" } },
+    { "type": "wokwi-pushbutton", "id": "mute", "top": 365, "left": 535, "attrs": { "color": "blue", "label": "Som", "key": "M", "bounce": "0" } }
+  ],
+  "connections": [
+    [ "noise:VCC", "esp:3V3", "red", [] ],
+    [ "noise:GND", "esp:GND.1", "black", [] ],
+    [ "noise:SIG", "esp:34", "blue", [] ],
+    [ "esp:25", "resGreen:1", "green", [] ],
+    [ "resGreen:2", "ledGreen:A", "green", [] ],
+    [ "ledGreen:C", "esp:GND.1", "black", [] ],
+    [ "esp:26", "resYellow:1", "yellow", [] ],
+    [ "resYellow:2", "ledYellow:A", "yellow", [] ],
+    [ "ledYellow:C", "esp:GND.1", "black", [] ],
+    [ "esp:27", "resRed:1", "red", [] ],
+    [ "resRed:2", "ledRed:A", "red", [] ],
+    [ "ledRed:C", "esp:GND.1", "black", [] ],
+    [ "buzzer:1", "esp:GND.1", "black", [] ],
+    [ "buzzer:2", "esp:18", "purple", [] ],
+    [ "mute:1.l", "esp:32", "blue", [] ],
+    [ "mute:2.l", "esp:GND.1", "black", [] ],
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ]
+  ],
+  "dependencies": {}
+}
