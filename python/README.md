@@ -37,14 +37,43 @@ O cliente precisa estar aberto para registrar cada mensagem recebida. Se estiver
 
 Use Python 3.10 ou superior. Copie `.env.example` para `.env` e informe `MQTT_USERNAME` e `MQTT_PASSWORD` do usuário MQTT do Python. Não use o App ID ou App Secret de gerenciamento do EMQX.
 
+### Linux
+
+No Ubuntu ou Debian, instale Python, `pip` e o suporte a ambientes virtuais (se ainda não estiverem instalados):
+
+```bash
+sudo apt update
+sudo apt install python3 python3-pip python3-venv
+```
+
+Na pasta principal do projeto, crie e ative um ambiente virtual, instale as dependências e prepare o arquivo de configuração:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r python/requirements.txt
+cp python/.env.example python/.env
+```
+
+Edite `python/.env` e preencha `MQTT_USERNAME` e `MQTT_PASSWORD`. Depois, ainda na pasta principal e com o ambiente virtual ativado, inicie o cliente:
+
+```bash
+python python/client.py
+```
+
+Para sair do ambiente virtual ao terminar, execute `deactivate`.
+
+### Windows
+
 Na pasta principal do projeto, instale as dependências e inicie o menu:
 
 ```powershell
 py -3 -m pip install -r python\requirements.txt
+Copy-Item python/.env.example python/.env
 py -3 python\client.py
 ```
 
-O arquivo `.env` local é ignorado pelo Git. Não compartilhe as credenciais MQTT.
+Preencha `MQTT_USERNAME` e `MQTT_PASSWORD` em `python/.env` antes de iniciar o cliente. O arquivo `.env` local é ignorado pelo Git. Não compartilhe as credenciais MQTT.
 
 ---
 

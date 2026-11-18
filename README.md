@@ -87,10 +87,34 @@ A leitura atual fica retida no broker. Para guardar as mensagens recebidas ao lo
 
 Use Python 3.10 ou superior. Copie `python/.env.example` para `python/.env`, preencha as credenciais MQTT do usuário Python e instale as dependências:
 
+#### Linux (Ubuntu/Debian)
+
+```bash
+sudo apt update
+sudo apt install python3 python3-pip python3-venv
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r python/requirements.txt
+cp python/.env.example python/.env
+```
+
+Preencha `MQTT_USERNAME` e `MQTT_PASSWORD` em `python/.env` e execute, ainda na pasta principal do projeto:
+
+```bash
+python python/client.py
+```
+
+Ao terminar, saia do ambiente virtual com `deactivate`.
+
+#### Windows
+
 ```powershell
 py -3 -m pip install -r python\requirements.txt
+Copy-Item python/.env.example python/.env
 py -3 python\client.py
 ```
+
+Preencha `MQTT_USERNAME` e `MQTT_PASSWORD` em `python/.env` antes de executar o cliente.
 
 ### Simulação no Wokwi
 
