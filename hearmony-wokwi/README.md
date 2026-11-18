@@ -73,4 +73,5 @@ Para usar MQTT, o firmware precisa das credenciais do usuário Edge, do host EMQ
 * Felipe Ribeiro Da Silva
 * Milena Kubo de Biaggi
 * Yasmim Eun Hae Kim
+* Thiago Fernandes Kulesza
 

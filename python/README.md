@@ -86,3 +86,4 @@ O usuário MQTT do Python precisa de permissão para assinar o tópico de teleme
 * Felipe Ribeiro Da Silva
 * Milena Kubo de Biaggi
 * Yasmim Eun Hae Kim
+* Thiago Fernandes Kulesza

@@ -116,6 +116,7 @@ README.md               Apresentação geral do projeto
 * Felipe Ribeiro Da Silva
 * Milena Kubo de Biaggi
 * Yasmim Eun Hae Kim
+* Thiago Fernandes Kulesza
 
 ---
 
