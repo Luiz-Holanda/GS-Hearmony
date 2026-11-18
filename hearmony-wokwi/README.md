@@ -65,6 +65,18 @@ O projeto está disponível pelo link do Wokwi acima. A biblioteca `PubSubClient
 
 Para usar MQTT, o firmware precisa das credenciais do usuário Edge, do host EMQX e do certificado CA configurados em `sketch.ino`. Mantenha as credenciais privadas e restritas aos tópicos deste dispositivo. Em uma placa física, configure também `WIFI_SSID` e `WIFI_PASSWORD`; a rede precisa permitir conexões de saída pela porta TCP `8883`.
 
+### Dashboard Edge local
+
+O dashboard desta pasta acompanha a telemetria do ESP32, mostra o estado atual e o histórico local, e permite enviar um novo limite pelo broker MQTT. Ele reutiliza o cliente e as dependências MQTT da pasta `python/`.
+
+Configure `python/.env` com as credenciais do usuário MQTT Python e instale as dependências conforme as instruções em [python/README.md](../python/README.md). Na pasta principal do projeto, inicie o dashboard:
+
+```bash
+python hearmony-wokwi/dashboard.py
+```
+
+No Windows, use `py -3 hearmony-wokwi\dashboard.py`. Em seguida, abra [http://127.0.0.1:8080](http://127.0.0.1:8080) no navegador. O dashboard usa o mesmo identificador MQTT do cliente de terminal; execute apenas um deles por vez. O servidor fica acessível somente no próprio computador.
+
 ---
 
 ## 🤖 Declaração de Uso de IA (Inteligência Artificial)

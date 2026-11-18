@@ -22,7 +22,7 @@ O Python não recebe uma medição acústica real: o valor `noise` vem do potenc
 
 ## 🔄 Relação com os outros módulos
 
-O ESP32 toma a decisão imediata e sinaliza o estado localmente. O EMQX Cloud encaminha os dados e comandos; este cliente Python recebe as leituras, publica limites e mantém um histórico neste computador. A interface Web integra a solução global em outro módulo do projeto.
+O ESP32 toma a decisão imediata e sinaliza o estado localmente. O EMQX Cloud encaminha os dados e comandos; o cliente Python recebe as leituras, publica limites e mantém um histórico neste computador.
 
 ```text
 ESP32 → telemetria → EMQX Cloud → Python → histórico local
@@ -65,15 +65,20 @@ Para sair do ambiente virtual ao terminar, execute `deactivate`.
 
 ### Windows
 
-Na pasta principal do projeto, instale as dependências e inicie o menu:
+Na pasta principal do projeto, instale as dependências:
 
 ```powershell
 py -3 -m pip install -r python\requirements.txt
 Copy-Item python/.env.example python/.env
+```
+
+Preencha `MQTT_USERNAME` e `MQTT_PASSWORD` em `python/.env` antes de iniciar o cliente:
+
+```powershell
 py -3 python\client.py
 ```
 
-Preencha `MQTT_USERNAME` e `MQTT_PASSWORD` em `python/.env` antes de iniciar o cliente. O arquivo `.env` local é ignorado pelo Git. Não compartilhe as credenciais MQTT.
+O arquivo `.env` local é ignorado pelo Git. Não compartilhe as credenciais MQTT.
 
 ---
 

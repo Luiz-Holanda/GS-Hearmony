@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7f5">
+  <title>Hearmony | Edge Dashboard</title>
+  <!-- Estilos responsivos do painel e dos indicadores de estado. -->
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172a28;
+      --muted: #70817d;
+      --line: #e2eae6;
+      --paper: #ffffff;
+      --canvas: #f3f7f5;
+      --green: #1e9b73;
+      --green-soft: #e5f5ef;
+      --yellow: #e5a72f;
+      --red: #e25a58;
+      --shadow: 0 16px 40px rgba(26, 58, 49, .07);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--canvas);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    header { padding: 28px 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; background: #dff3eb; color: var(--green); font-size: 23px; }
+    .brand h1 { margin: 0; font-size: 19px; letter-spacing: -.04em; }
+    .brand p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+    .connection { display: inline-flex; align-items: center; gap: 9px; padding: 9px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); font-size: 12px; color: var(--muted); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #aab8b3; }
+    .connection.online .dot { background: var(--green); box-shadow: 0 0 0 4px #e5f5ef; }
+    .connection.offline .dot { background: var(--red); box-shadow: 0 0 0 4px #fff0ef; }
+    main { padding-bottom: 40px; }
+    .intro { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin: 12px 0 22px; }
+    .eyebrow { color: var(--green); font-size: 11px; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+    h2 { margin: 7px 0 0; font-size: clamp(25px, 4vw, 34px); letter-spacing: -.055em; }
+    .updated { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); }
+    .reading-card { padding: 24px; min-height: 270px; }
+    .card-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .card-title { margin: 0; color: var(--muted); font-size: 13px; font-weight: 600; }
+    .tag { padding: 6px 10px; color: #64726e; background: #f2f5f3; border-radius: 999px; font-size: 11px; }
+    .reading { display: flex; align-items: baseline; gap: 9px; margin: 26px 0 16px; }
+    .reading strong { font-size: clamp(54px, 8vw, 76px); line-height: .95; letter-spacing: -.07em; font-weight: 650; }
+    .reading span { color: var(--muted); font-size: 14px; }
+    .meter { height: 12px; border-radius: 99px; overflow: hidden; background: linear-gradient(90deg, #bde9d8 0 60%, #f7e4b8 60% 75%, #f2c5c1 75% 100%); position: relative; }
+    .meter-fill { position: absolute; inset: 0 auto 0 0; width: 0; border-right: 3px solid #223c36; transition: width .35s ease; }
+    .meter-labels { display: flex; justify-content: space-between; margin-top: 8px; color: #9aa8a3; font-size: 10px; }
+    .state-card { padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 270px; }
+    .state-main { margin-top: 22px; display: flex; align-items: center; gap: 14px; }
+    .state-icon { width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center; font-size: 24px; background: var(--green-soft); color: var(--green); }
+    .state-icon.attention { background: #fff5df; color: var(--yellow); }
+    .state-icon.protection { background: #fff0ef; color: var(--red); }
+    .state-main strong { display: block; font-size: 25px; letter-spacing: -.04em; }
+    .state-main span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .state-footer { display: flex; justify-content: space-between; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+    .lower { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; margin-top: 16px; }
+    .history-card, .control-card { padding: 22px 24px; }
+    .history-list { display: grid; gap: 12px; margin-top: 19px; }
+    .history-row { display: grid; grid-template-columns: 58px 1fr auto; align-items: center; gap: 12px; font-size: 12px; }
+    .history-time { color: var(--muted); }
+    .history-track { height: 7px; border-radius: 99px; background: #edf2ef; overflow: hidden; }
+    .history-bar { display: block; height: 100%; border-radius: inherit; background: var(--green); min-width: 2px; }
+    .history-bar.atencao { background: var(--yellow); }
+    .history-bar.protecao { background: var(--red); }
+    .history-value { color: var(--ink); font-variant-numeric: tabular-nums; }
+    .empty { color: var(--muted); font-size: 13px; padding: 18px 0 4px; }
+    .threshold-display { margin: 20px 0 12px; display: flex; align-items: baseline; gap: 6px; }
+    .threshold-display strong { font-size: 38px; letter-spacing: -.06em; }
+    .threshold-display span { color: var(--muted); font-size: 12px; }
+    input[type=range] { width: 100%; accent-color: var(--green); }
+    .range-labels { display: flex; justify-content: space-between; margin-top: 3px; color: var(--muted); font-size: 10px; }
+    button { width: 100%; margin-top: 18px; padding: 12px 15px; border: 0; border-radius: 12px; color: white; background: #1e8065; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .15s, transform .15s; }
+    button:hover { background: #176a54; transform: translateY(-1px); }
+    button:disabled { opacity: .55; cursor: wait; transform: none; }
+    .feedback { min-height: 18px; margin: 10px 0 0; color: var(--muted); font-size: 11px; }
+    .note { margin-top: 16px; padding: 13px 16px; border: 1px solid #e6ede9; border-radius: 14px; color: #687a74; background: #edf4f0; font-size: 11px; line-height: 1.55; }
+    .note strong { color: #34574c; }
+    @media (max-width: 760px) {
+      .grid, .lower { grid-template-columns: 1fr; }
+      .intro { align-items: start; flex-direction: column; }
+      .updated { white-space: normal; }
+      header { padding-top: 20px; }
+    }
+    @media (max-width: 420px) {
+      .shell { width: min(100% - 24px, 1120px); }
+      .reading-card, .state-card, .history-card, .control-card { padding: 19px; }
+      .connection { padding: 8px 10px; font-size: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">〰</div>
+        <div><h1>Hearmony</h1><p>Monitoramento sensorial · Edge Computing</p></div>
+      </div>
+      <div id="connection" class="connection"><span class="dot"></span><span id="connectionText">Conferindo conexão</span></div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div><div class="eyebrow">Painel do dispositivo</div><h2>Como está o ambiente?</h2></div>
+        <div class="updated" id="updated">Aguardando dados do ESP32</div>
+      </section>
+
+      <section class="grid" aria-label="Leitura e estado atuais">
+        <article class="card reading-card">
+          <div class="card-head"><h3 class="card-title">Nível de ruído representado</h3><span class="tag">ESP32 · escala 0–100</span></div>
+          <div class="reading"><strong id="noise">—</strong><span>pontos</span></div>
+          <div class="meter" role="img" aria-label="Escala de 0 a 100 pontos"><span class="meter-fill" id="meterFill"></span></div>
+          <div class="meter-labels"><span>0 · confortável</span><span>atenção</span><span>100 · proteção</span></div>
+        </article>
+
+        <article class="card state-card">
+          <div>
+            <div class="card-head"><h3 class="card-title">Estado atual</h3><span class="tag" id="device">hearmony-01</span></div>
+            <div class="state-main"><div class="state-icon" id="stateIcon" aria-hidden="true">✓</div><div><strong id="stateName">Aguardando leitura</strong><span id="stateDescription">O estado será atualizado com a telemetria.</span></div></div>
+          </div>
+          <div class="state-footer"><span>Limite configurado</span><strong id="currentThreshold">— pontos</strong></div>
+        </article>
+      </section>
+
+      <section class="lower">
+        <article class="card history-card">
+          <div class="card-head"><h3 class="card-title">Leituras recentes</h3><span class="tag">Histórico local</span></div>
+          <div class="history-list" id="history"><div class="empty">As leituras recebidas aparecerão aqui.</div></div>
+        </article>
+        <article class="card control-card">
+          <div class="card-head"><h3 class="card-title">Ajustar limite de resposta</h3><span class="tag">55–85</span></div>
+          <div class="threshold-display"><strong id="thresholdValue">70</strong><span>pontos</span></div>
+          <input id="threshold" type="range" min="55" max="85" value="70" aria-label="Novo limite de resposta">
+          <div class="range-labels"><span>55</span><span>85</span></div>
+          <button id="sendThreshold" type="button">Enviar limite ao ESP32</button>
+          <p class="feedback" id="feedback" role="status" aria-live="polite">O ESP32 aplica o limite ao receber o comando.</p>
+        </article>
+      </section>
+
+      <aside class="note"><strong>Sobre esta demonstração:</strong> o valor exibido é uma escala simulada em pontos. No circuito Wokwi, o potenciômetro representa a entrada de ruído; não há captura de áudio nem medição em decibéis.</aside>
+    </main>
+  </div>
+
+  <!-- Atualiza os dados consultando a API local e publica limites via HTTP. -->
+  <script>
+    const el = (id) => document.getElementById(id);
+    const thresholdSlider = el('threshold');
+    thresholdSlider.addEventListener('input', () => { el('thresholdValue').textContent = thresholdSlider.value; });
+
+    function nomeEstado(estado) {
+      if (estado === 'conforto') return ['Conforto', 'Entrada abaixo da faixa de atenção.', '✓', 'calm'];
+      if (estado === 'atencao') return ['Atenção', 'O dispositivo sinaliza atenção localmente.', '!', 'attention'];
+      if (estado === 'protecao') return ['Proteção', 'O dispositivo sinaliza o limite de proteção.', '⌁', 'protection'];
+      return ['Sem leitura', 'Aguardando telemetria do ESP32.', '…', 'calm'];
+    }
+
+    function hora(valor) {
+      if (!valor) return '—';
+      const data = new Date(valor);
+      return Number.isNaN(data.getTime()) ? '—' : data.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function atualizarHistorico(registros) {
+      const container = el('history');
+      container.replaceChildren();
+      if (!registros || registros.length === 0) {
+        const vazio = document.createElement('div');
+        vazio.className = 'empty'; vazio.textContent = 'As leituras recebidas aparecerão aqui.';
+        container.append(vazio); return;
+      }
+      registros.slice().reverse().forEach((item) => {
+        const valor = Number(item.noise);
+        const row = document.createElement('div'); row.className = 'history-row';
+        const time = document.createElement('span'); time.className = 'history-time'; time.textContent = hora(item.received_at);
+        const track = document.createElement('span'); track.className = 'history-track';
+        const bar = document.createElement('span'); bar.className = 'history-bar ' + (item.state || '');
+        bar.style.width = `${Math.max(0, Math.min(100, Number.isFinite(valor) ? valor : 0))}%`; track.append(bar);
+        const amount = document.createElement('strong'); amount.className = 'history-value'; amount.textContent = Number.isFinite(valor) ? `${valor} pts` : '—';
+        row.append(time, track, amount); container.append(row);
+      });
+    }
+
+    function atualizarPainel(dados) {
+      const conexao = el('connection');
+      conexao.classList.toggle('online', dados.connected);
+      conexao.classList.toggle('offline', !dados.connected);
+      el('connectionText').textContent = dados.connected ? 'Broker conectado' : 'Broker desconectado';
+      const leitura = dados.telemetry;
+      if (leitura) {
+        const ruido = Number(leitura.noise);
+        el('noise').textContent = Number.isFinite(ruido) ? ruido : '—';
+        el('meterFill').style.width = `${Math.max(0, Math.min(100, Number.isFinite(ruido) ? ruido : 0))}%`;
+        const [titulo, descricao, icone, classe] = nomeEstado(leitura.state);
+        el('stateName').textContent = titulo;
+        el('stateDescription').textContent = descricao;
+        el('stateIcon').textContent = icone;
+        el('stateIcon').className = `state-icon ${classe}`;
+        el('device').textContent = leitura.device || 'ESP32';
+        el('currentThreshold').textContent = `${leitura.threshold ?? '—'} pontos`;
+        if (leitura.threshold !== undefined && !thresholdSlider.dataset.touched) {
+          thresholdSlider.value = Math.max(55, Math.min(85, Number(leitura.threshold)));
+          el('thresholdValue').textContent = thresholdSlider.value;
+        }
+        el('updated').textContent = `Atualizado pelo ESP32 · limite ${leitura.threshold ?? '—'} pontos`;
+      } else {
+        el('updated').textContent = dados.connected ? 'Broker conectado · aguardando telemetria' : 'Aguardando conexão e telemetria';
+      }
+      atualizarHistorico(dados.history);
+    }
+
+    thresholdSlider.addEventListener('input', () => { thresholdSlider.dataset.touched = 'true'; });
+    async function carregarStatus() {
+      try {
+        const resposta = await fetch('/api/status', { cache: 'no-store' });
+        atualizarPainel(await resposta.json());
+      } catch (_) {
+        el('connection').classList.add('offline');
+        el('connectionText').textContent = 'Servidor indisponível';
+      }
+    }
+    el('sendThreshold').addEventListener('click', async () => {
+      const botao = el('sendThreshold');
+      const feedback = el('feedback');
+      botao.disabled = true; feedback.textContent = 'Enviando comando…';
+      try {
+        const resposta = await fetch('/api/threshold', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ threshold: Number(thresholdSlider.value) })
+        });
+        const resultado = await resposta.json();
+        feedback.textContent = resultado.message || resultado.error;
+      } catch (_) {
+        feedback.textContent = 'Não foi possível conversar com o servidor local.';
+      } finally { botao.disabled = false; }
+    });
+    carregarStatus();
+    setInterval(carregarStatus, 2500);
+  </script>
+</body>
+</html>

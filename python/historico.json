@@ -289,5 +289,96 @@
     },
     "resultado_python": "recebida via MQTT",
     "recebida_em": "2026-11-18T22:50:19.761480+00:00"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 87,
+      "threshold": 70,
+      "state": "protecao",
+      "anc_simulado": true,
+      "alert_sound": true,
+      "unit": "pontos"
+    },
+    "resultado_python": "recebida via MQTT",
+    "recebida_em": "2026-11-18T23:05:10.076013+00:00"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 45,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos"
+    },
+    "resultado_python": "recebida via MQTT",
+    "recebida_em": "2026-11-18T23:06:24.531483+00:00"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 45,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos"
+    },
+    "resultado_python": "recebida via MQTT",
+    "recebida_em": "2026-11-18T23:06:29.499696+00:00"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 45,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos"
+    },
+    "resultado_python": "recebida via MQTT",
+    "recebida_em": "2026-11-18T23:06:34.544107+00:00"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 18,
+      "threshold": 70,
+      "state": "conforto",
+      "anc_simulado": false,
+      "alert_sound": true,
+      "unit": "pontos"
+    },
+    "resultado_python": "recebida via MQTT",
+    "recebida_em": "2026-11-18T23:06:46.595299+00:00"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 100,
+      "threshold": 70,
+      "state": "protecao",
+      "anc_simulado": true,
+      "alert_sound": true,
+      "unit": "pontos"
+    },
+    "resultado_python": "recebida via MQTT",
+    "recebida_em": "2026-11-18T23:06:59.221176+00:00"
+  },
+  {
+    "telemetria": {
+      "device": "hearmony-01",
+      "noise": 100,
+      "threshold": 70,
+      "state": "protecao",
+      "anc_simulado": true,
+      "alert_sound": true,
+      "unit": "pontos"
+    },
+    "resultado_python": "recebida via MQTT",
+    "recebida_em": "2026-11-18T23:06:59.252041+00:00"
   }
 ]

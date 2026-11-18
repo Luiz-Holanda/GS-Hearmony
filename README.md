@@ -30,7 +30,7 @@ O objetivo de longo prazo é combinar detecção sonora, limites personalizados 
 
 ## 🌐 Como as partes do Hearmony se relacionam
 
-O projeto reúne módulos com responsabilidades diferentes. O **ESP32** recebe a entrada simulada e decide localmente como sinalizar cada estado. O **broker MQTT EMQX Cloud** encaminha as leituras e os comandos entre os dispositivos. O **cliente Python** acompanha os dados, publica limites e mantém o histórico neste computador. A interface Web faz parte da solução global e está sendo desenvolvida em outro módulo do projeto.
+O projeto reúne módulos com responsabilidades diferentes. O **ESP32** recebe a entrada simulada e decide localmente como sinalizar cada estado. O **broker MQTT EMQX Cloud** encaminha as leituras e os comandos entre os dispositivos. O **cliente Python** acompanha os dados, publica limites e mantém o histórico neste computador. O dashboard web local mostra a telemetria e permite ajustar o limite enviado ao ESP32.
 
 ```text
 Potenciômetro → ESP32 / Edge → EMQX Cloud → Cliente Python e interface Web
@@ -77,7 +77,7 @@ A conexão com a nuvem amplia o acompanhamento, mas não controla a decisão ime
 5. Quando há conexão, o ESP32 publica a telemetria no broker MQTT.
 6. O cliente Python recebe as leituras, permite publicar um novo limite e registra o histórico local.
 
-A leitura atual fica retida no broker. Para guardar as mensagens recebidas ao longo do tempo, o cliente Python precisa permanecer aberto.
+A leitura atual fica retida no broker. Para guardar as mensagens recebidas ao longo do tempo, o cliente Python ou o dashboard precisa permanecer aberto.
 
 ---
 
@@ -85,7 +85,7 @@ A leitura atual fica retida no broker. Para guardar as mensagens recebidas ao lo
 
 ### Cliente Python
 
-Use Python 3.10 ou superior. Copie `python/.env.example` para `python/.env`, preencha as credenciais MQTT do usuário Python e instale as dependências:
+Use Python 3.10 ou superior. Configure `python/.env` com as credenciais MQTT do usuário Python e instale as dependências:
 
 #### Linux (Ubuntu/Debian)
 
@@ -101,8 +101,10 @@ cp python/.env.example python/.env
 Preencha `MQTT_USERNAME` e `MQTT_PASSWORD` em `python/.env` e execute, ainda na pasta principal do projeto:
 
 ```bash
-python python/client.py
+python hearmony-wokwi/dashboard.py
 ```
+
+Abra `http://127.0.0.1:8080` no navegador. Para usar apenas o menu de terminal, execute `python python/client.py` no lugar do dashboard. No Windows, inicie o dashboard com `py -3 hearmony-wokwi\dashboard.py` ou o menu de terminal com `py -3 python\client.py`. O cliente e o dashboard usam o mesmo identificador MQTT; execute somente um deles por vez.
 
 Ao terminar, saia do ambiente virtual com `deactivate`.
 
@@ -111,10 +113,10 @@ Ao terminar, saia do ambiente virtual com `deactivate`.
 ```powershell
 py -3 -m pip install -r python\requirements.txt
 Copy-Item python/.env.example python/.env
-py -3 python\client.py
+py -3 hearmony-wokwi\dashboard.py
 ```
 
-Preencha `MQTT_USERNAME` e `MQTT_PASSWORD` em `python/.env` antes de executar o cliente.
+Preencha `MQTT_USERNAME` e `MQTT_PASSWORD` em `python/.env` antes de executar. Abra `http://127.0.0.1:8080` no navegador. Para usar apenas o menu de terminal, execute `py -3 python\client.py` no lugar do dashboard.
 
 ### Simulação no Wokwi
 
