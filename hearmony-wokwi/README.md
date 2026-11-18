@@ -67,6 +67,15 @@ Para usar MQTT, o firmware precisa das credenciais do usuário Edge, do host EMQ
 
 ---
 
+## 🤖 Declaração de Uso de IA (Inteligência Artificial)
+
+Em conformidade com os critérios éticos e diretrizes acadêmicas da Sprint 4, declaramos que a Inteligência Artificial foi utilizada exclusivamente nas seguintes situações:
+
+* Criação e formatação deste README;
+* Revisão geral do projeto;
+* Auxílio pontual na identificação e resolução de bugs.
+
+---
 # 👥 Equipe
 
 * Luiz Alberto De Carvalho Holanda Junior

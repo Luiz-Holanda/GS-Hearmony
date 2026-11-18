@@ -107,6 +107,15 @@ circuito.png            Imagem do circuito do protótipo
 materiaisdeaula/        Materiais de aula
 README.md               Apresentação geral do projeto
 ```
+---
+
+## 🤖 Declaração de Uso de IA (Inteligência Artificial)
+
+Em conformidade com os critérios éticos e diretrizes acadêmicas da Sprint 4, declaramos que a Inteligência Artificial foi utilizada exclusivamente nas seguintes situações:
+
+* Criação e formatação deste README;
+* Revisão geral do projeto;
+* Auxílio pontual na identificação e resolução de bugs.
 
 ---
 
